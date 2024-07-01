@@ -1,0 +1,154 @@
+<html><head><base href="https://websim.ai/c/windows98"><title>Windows 98 Simulator</title><style>
+        body {
+            font-family: 'MS Sans Serif', Arial, sans-serif;
+            background-color: #008080;
+            margin: 0;
+            padding: 0;
+            user-select: none;
+        }
+        .desktop {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+        .taskbar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 28px;
+            background-color: #c0c0c0;
+            border-top: 1px solid #ffffff;
+            display: flex;
+            align-items: center;
+            padding: 2px;
+        }
+        .start-button {
+            display: flex;
+            align-items: center;
+            background-color: #c0c0c0;
+            border: outset 2px;
+            padding: 2px 5px;
+            margin-right: 10px;
+            font-weight: bold;
+            font-size: 11px;
+            cursor: pointer;
+        }
+        .start-button:active {
+            border: inset 2px;
+        }
+        .start-logo {
+            width: 16px;
+            height: 16px;
+            margin-right: 5px;
+            image-rendering: pixelated;
+        }
+        .time {
+            margin-left: auto;
+            padding: 2px 5px;
+            border: inset 2px;
+            font-size: 11px;
+        }
+        .window {
+            position: absolute;
+            width: 300px;
+            height: 200px;
+            background-color: #c0c0c0;
+            border: outset 2px;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+        }
+        .title-bar {
+            background-color: #000080;
+            color: white;
+            padding: 2px 5px;
+            font-weight: bold;
+            font-size: 11px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .close-button {
+            background-color: #c0c0c0;
+            border: outset 1px;
+            width: 16px;
+            height: 14px;
+            font-size: 9px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+        .close-button:active {
+            border: inset 1px;
+        }
+        .window-content {
+            padding: 10px;
+            font-size: 12px;
+        }
+        .icon {
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 64px;
+            cursor: pointer;
+        }
+        .icon img {
+            width: 32px;
+            height: 32px;
+            margin-bottom: 5px;
+            image-rendering: pixelated;
+        }
+        .icon-label {
+            color: white;
+            font-size: 11px;
+            text-align: center;
+            text-shadow: 1px 1px 1px black;
+        }
+    </style></head><body><div class="desktop">
+        <div class="icon" style="top: 20px; left: 20px;">
+            <img src="https://win98icons.alexmeub.com/icons/png/my_computer-0.png" alt="My Computer">
+            <div class="icon-label">My Computer</div>
+        </div>
+        <div class="icon" style="top: 100px; left: 20px;">
+            <img src="https://win98icons.alexmeub.com/icons/png/network_neighborhood-0.png" alt="Network Neighborhood">
+            <div class="icon-label">Network Neighborhood</div>
+        </div>
+        <div class="icon" style="top: 180px; left: 20px;">
+            <img src="https://win98icons.alexmeub.com/icons/png/recycle_bin_empty-0.png" alt="Recycle Bin">
+            <div class="icon-label">Recycle Bin</div>
+        </div>
+        <div class="window" style="top: 50px; left: 100px;">
+            <div class="title-bar">
+                <span>Welcome to Windows 98</span>
+                <div class="close-button">X</div>
+            </div>
+            <div class="window-content">
+                <p>Welcome to the Windows 98 simulator!</p>
+                <p>This is a nostalgic recreation of the classic operating system.</p>
+                <p>Feel free to explore and relive the good old days of computing.</p>
+            </div>
+        </div>
+        <div class="taskbar">
+            <div class="start-button">
+                <img src="https://win98icons.alexmeub.com/icons/png/windows-0.png" alt="Start" class="start-logo">
+                Start
+            </div>
+            <div class="time" id="clock"></div>
+        </div>
+    </div>
+    <script>
+        function updateClock() {
+            const now = new Date();
+            const time = now.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true });
+            document.getElementById('clock').textContent = time;
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+        
+        document.querySelector('.close-button').addEventListener('click', function() {
+            this.closest('.window').style.display = 'none';
+        });
+    </script>
+</body></html>
